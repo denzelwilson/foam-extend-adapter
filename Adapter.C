@@ -438,7 +438,7 @@ void preciceAdapter::Adapter::execute()
     // if (ncheckpointed is nregisterdobjects. )
 
     // Same as above, preCICE v3.2 throws internal preCICE errors
-    // as precice::Error instead of aborting the process. 
+    // as precice::Error instead of aborting the process.
     // Catching them here and fail through OpenFOAM's own
     // fatal error path, so simulation shuts down cleanly.
     try
