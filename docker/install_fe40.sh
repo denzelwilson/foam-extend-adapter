@@ -17,8 +17,11 @@ cd solid-cpp || exit
 LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH cmake .
 LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH make
 ./rigid_body_solver &
-cd ../fluid-foam-extend || exit
+cd ../fluid-openfoam || exit
+sed -i "s/noSlip;/fixedValue;/g" 0/U
+mkdir -p constant/polyMesh
+cp system/blockMeshDict constant/polyMesh/blockMeshDict
 blockMesh
-pimpleDyMFoam
+../../tools/run-foam-extend.sh
 
 exit 0
