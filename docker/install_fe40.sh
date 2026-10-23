@@ -19,9 +19,10 @@ LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH make
 ./rigid_body_solver &
 cd ../fluid-openfoam || exit
 sed -i "s/noSlip;/fixedValue;/g" 0/U
+sed -i "s/run-openfoam/run-foam-extend/g" run.sh
 mkdir -p constant/polyMesh
 cp system/blockMeshDict constant/polyMesh/blockMeshDict
-blockMesh
-../../tools/run-foam-extend.sh
+
+./run.sh
 
 exit 0
