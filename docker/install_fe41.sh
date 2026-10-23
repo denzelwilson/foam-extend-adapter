@@ -18,9 +18,10 @@ make
 
 ./rigid_body_solver &
 cd ../fluid-openfoam || exit
+sed -i "s/run-openfoam/run-foam-extend/g" run.sh
 mkdir -p constant/polyMesh
 cp system/blockMeshDict constant/polyMesh/blockMeshDict
-blockMesh
-../../tools/run-foam-extend.sh
+
+./run.sh
 
 exit 0
